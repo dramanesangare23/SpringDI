@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- Definition for spellChecker bean -->
+	<bean name="spellChecker" class="com.tutorialspoint.SpellChecker" />
+	<!-- Definition for textEditor bean -->
+	<!-- <bean id="textEditor" class="com.tutorialspoint.TextEditor"> <constructor-arg 
+		index="0" ref="spellChecker" /> <constructor-arg index="1" value="3" /> <constructor-arg 
+		index="2" value="Warlord" /> </bean> -->
+
+	<bean id="textEditor" class="com.tutorialspoint.TextEditor">
+		<!-- <property name="spellChecker" ref="spellChecker" /> -->
+		<property name="spellChecker">
+			<bean id="spellChecker" class="com.tutorialspoint.SpellChecker" />
+		</property>
+		<property name="numberOfWords" value="3" />
+		<property name="textOwner" value="Warlord" />
+	</bean>
+
+</beans>
